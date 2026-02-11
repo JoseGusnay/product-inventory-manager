@@ -1,11 +1,4 @@
-import {
-  Component,
-  input,
-  output,
-  computed,
-  ChangeDetectionStrategy,
-  TemplateRef,
-} from '@angular/core';
+import { Component, input, computed, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SkeletonComponent } from '../../atoms/skeleton/skeleton';
 import { UI_TEXTS } from '../../../../core/constants/ui-texts.constants';

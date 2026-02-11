@@ -1,0 +1,14 @@
+@use '../../../../../styles/variables' as v;
+
+:host {
+  display: block;
+}
+
+.a-label {
+  font-family: v.$font-family;
+  font-size: v.$font-size-label;
+  color: v.$color-text-primary;
+  font-weight: 600;
+  display: block;
+  margin-bottom: v.$spacing-xs;
+}

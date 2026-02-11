@@ -1,1 +1,56 @@
+@use 'styles/variables' as v;
+
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Prelos Slab';
+  src:
+    url('/preloslab-semibold/preloslab-semibold.woff') format('woff'),
+    url('/preloslab-semibold/preloslab-semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Prelos Slab', sans-serif;
+  color: v.$color-text-primary;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: v.$color-primary;
+  margin: 0;
+}
+
+.custom-tooltip {
+  position: fixed;
+  background-color: v.$color-text-primary;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10000;
+  pointer-events: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+  // Arrow
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: v.$color-text-primary;
+  }
+}

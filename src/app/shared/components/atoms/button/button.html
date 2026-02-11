@@ -1,0 +1,13 @@
+<button
+  [type]="type()"
+  [disabled]="disabled() || loading()"
+  [class]="'a-button a-button--' + variant()"
+  [class.a-button--loading]="loading()"
+  (click)="onClick($event)"
+>
+  @if (loading()) {
+    <div class="a-button__spinner"></div>
+  } @else {
+    {{ label() }}
+  }
+</button>

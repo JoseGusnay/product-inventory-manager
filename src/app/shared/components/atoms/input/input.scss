@@ -1,0 +1,73 @@
+@use '../../../../../styles/variables' as vars;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.a-input {
+  display: block;
+  width: 100%;
+  padding: vars.$input-padding;
+  border: 1px solid vars.$color-border-default;
+  border-radius: vars.$border-radius-sm;
+  font-family: vars.$font-family;
+  font-size: vars.$font-size-input;
+  font-weight: vars.$font-weight-medium;
+  outline: none;
+  box-sizing: border-box;
+
+  &:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+    color: #999;
+    opacity: 0.7;
+  }
+
+  &::placeholder {
+    color: #999;
+    font-weight: 400;
+  }
+
+  &:focus {
+    border-color: vars.$color-primary;
+    box-shadow: 0 0 0 3px rgba(vars.$color-primary, 0.15);
+  }
+
+  &--error {
+    border-color: vars.$color-error;
+
+    &:focus {
+      border-color: vars.$color-error-focus;
+      box-shadow: 0 0 0 3px rgba(vars.$color-error-focus, 0.15);
+    }
+  }
+
+  &--loading {
+    padding-right: 2.5rem;
+  }
+}
+
+.a-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.a-input-spinner {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(vars.$color-primary, 0.2);
+  border-radius: 50%;
+  border-top-color: vars.$color-primary;
+  animation: input-spin 0.6s linear infinite;
+}
+
+@keyframes input-spin {
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}

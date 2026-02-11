@@ -1,0 +1,13 @@
+@use '../../../../../styles/variables' as v;
+
+:host {
+  display: block;
+}
+
+.a-error {
+  font-family: v.$font-family;
+  font-size: v.$font-size-error;
+  color: v.$color-error;
+  display: block;
+  margin-top: v.$spacing-xs;
+}

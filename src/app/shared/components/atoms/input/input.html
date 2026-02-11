@@ -1,0 +1,17 @@
+<div class="a-input-wrapper">
+  <input
+    [type]="type()"
+    [class]="
+      'a-input ' + (hasError() ? 'a-input--error' : '') + (isLoading() ? ' a-input--loading' : '')
+    "
+    [value]="value()"
+    [placeholder]="placeholder()"
+    [disabled]="isDisabled()"
+    (input)="onInputChange($event)"
+    (blur)="onBlur()"
+  />
+
+  @if (isLoading()) {
+    <div class="a-input-spinner"></div>
+  }
+</div>

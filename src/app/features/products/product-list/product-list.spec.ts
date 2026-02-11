@@ -14,6 +14,7 @@ import { Product } from '../../../core/models/product.model';
 import { TableComponent } from '../../../shared/components/molecules/table/table';
 import { ButtonComponent } from '../../../shared/components/atoms/button/button';
 import { ModalComponent } from '../../../shared/components/molecules/modal/modal';
+import { PaginationComponent } from '../../../shared/components/molecules/pagination/pagination';
 
 @Component({
   selector: 'app-table',
@@ -49,6 +50,19 @@ class MockModalComponent {
   @Input() confirmLabel = '';
   @Output() confirmed = new EventEmitter<void>();
   @Output() closed = new EventEmitter<void>();
+}
+
+@Component({
+  selector: 'app-pagination',
+  standalone: true,
+  template: '',
+})
+class MockPaginationComponent {
+  @Input() totalItems = 0;
+  @Input() itemsPerPage = 0;
+  @Input() currentPage = 1;
+  @Output() pageChange = new EventEmitter<number>();
+  @Output() itemsPerPageChange = new EventEmitter<number>();
 }
 
 describe('ProductListComponent', () => {
@@ -145,8 +159,15 @@ describe('ProductListComponent', () => {
       ],
     })
       .overrideComponent(ProductListComponent, {
-        remove: { imports: [TableComponent, ButtonComponent, ModalComponent] },
-        add: { imports: [MockTableComponent, MockButtonComponent, MockModalComponent] },
+        remove: { imports: [TableComponent, ButtonComponent, ModalComponent, PaginationComponent] },
+        add: {
+          imports: [
+            MockTableComponent,
+            MockButtonComponent,
+            MockModalComponent,
+            MockPaginationComponent,
+          ],
+        },
       })
       .compileComponents();
 
@@ -198,10 +219,15 @@ describe('ProductListComponent', () => {
       expect(component.searchTerm()).toBe('new search');
     });
 
-    it('should update itemsPerPage on change', () => {
-      const event = { target: { value: '10' } } as any;
-      component.onItemsPerPageChange(event);
+    it('should update itemsPerPage and reset page on change', () => {
+      component.onItemsPerPageChange(10);
       expect(component.itemsPerPage()).toBe(10);
+      expect(component.currentPage()).toBe(1);
+    });
+
+    it('should update currentPage on onPageChange', () => {
+      component.onPageChange(2);
+      expect(component.currentPage()).toBe(2);
     });
   });
 

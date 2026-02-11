@@ -20,25 +20,16 @@
     <app-table [data]="paginatedProducts()" [columns]="columns()" [isLoading]="isLoading()">
     </app-table>
 
-    <div class="p-product-list__footer">
-      <span class="results-count"
-        >{{ filteredProducts().length }} {{ uiTexts.MESSAGES.RESULTS }}</span
-      >
-      <div class="pagination-container">
-        <select
-          class="pagination-select"
-          [value]="itemsPerPage()"
-          (change)="onItemsPerPageChange($event)"
-        >
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="20">20</option>
-        </select>
-      </div>
-    </div>
+    <app-pagination
+      [totalItems]="filteredProducts().length"
+      [itemsPerPage]="itemsPerPage()"
+      [currentPage]="currentPage()"
+      (pageChange)="onPageChange($event)"
+      (itemsPerPageChange)="onItemsPerPageChange($event)"
+    >
+    </app-pagination>
   </div>
 
-  <!-- Templates for Table -->
   <ng-template #logoTemplate let-row>
     <app-avatar [src]="row.logo" [name]="row.name"></app-avatar>
   </ng-template>

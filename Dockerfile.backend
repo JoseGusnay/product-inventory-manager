@@ -1,0 +1,18 @@
+# Usa una imagen de Node.js 22 LTS
+FROM node:22-alpine
+
+WORKDIR /app
+
+# Copiamos solo los archivos de dependencias desde la ruta relativa
+COPY repo-interview-main/package.json repo-interview-main/package-lock.json* ./
+
+# Instalamos dependencias
+RUN npm install
+
+# Copiamos el resto del código del backend
+COPY repo-interview-main/ .
+
+EXPOSE 3002
+
+# Ejecutamos el script de desarrollo
+CMD ["npm", "run", "start:dev"]

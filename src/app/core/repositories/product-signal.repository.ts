@@ -24,9 +24,12 @@ export class ProductSignalRepository extends ProductRepository {
         const data = Array.isArray(response) ? response : (response as any)?.data || [];
         return data.map(ProductMapper.toDomain);
       }),
-      tap((domainProducts) => {
-        this._products.set(domainProducts);
-        this._isLoading.set(false);
+      tap({
+        next: (domainProducts) => {
+          this._products.set(domainProducts);
+        },
+        error: () => this._isLoading.set(false),
+        complete: () => this._isLoading.set(false),
       }),
     );
   }

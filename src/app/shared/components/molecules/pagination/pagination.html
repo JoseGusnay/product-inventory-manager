@@ -1,0 +1,37 @@
+<div class="m-pagination">
+  <span class="m-pagination__count"> {{ totalItems() }} Resultados </span>
+
+  <div class="m-pagination__controls-wrapper">
+    <div class="m-pagination__controls">
+      <button
+        class="m-pagination__btn"
+        [disabled]="currentPage() === 1"
+        (click)="prevPage()"
+        aria-label="Anterior"
+      >
+        ❮
+      </button>
+      <span class="m-pagination__indicator">
+        Página {{ currentPage() }} de {{ totalPages() }}
+      </span>
+      <button
+        class="m-pagination__btn"
+        [disabled]="currentPage() >= totalPages()"
+        (click)="nextPage()"
+        aria-label="Siguiente"
+      >
+        ❯
+      </button>
+    </div>
+
+    <select
+      class="m-pagination__select"
+      [value]="itemsPerPage()"
+      (change)="onItemsPerPageChange($event)"
+    >
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+    </select>
+  </div>
+</div>

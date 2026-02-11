@@ -27,6 +27,7 @@ import {
 import { UI_TEXTS } from '../../../core/constants/ui-texts.constants';
 import { AvatarComponent } from '../../../shared/components/atoms/avatar/avatar';
 import { TableColumn } from '../../../shared/components/molecules/table/table.interface';
+import { PaginationComponent } from '../../../shared/components/molecules/pagination/pagination';
 
 import { NotificationService } from '../../../core/services/notification.service';
 
@@ -40,6 +41,7 @@ import { NotificationService } from '../../../core/services/notification.service
     ModalComponent,
     DropdownComponent,
     AvatarComponent,
+    PaginationComponent,
   ],
   templateUrl: './product-list.html',
   styleUrl: './product-list.scss',
@@ -59,6 +61,7 @@ export class ProductListComponent implements OnInit, AfterViewInit {
 
   searchTerm = signal<string>('');
   itemsPerPage = signal<number>(5);
+  currentPage = signal<number>(1);
 
   isModalOpen = signal(false);
   isDeleting = signal(false);
@@ -88,7 +91,9 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   });
 
   paginatedProducts = computed(() => {
-    return this.filteredProducts().slice(0, this.itemsPerPage());
+    const start = (this.currentPage() - 1) * this.itemsPerPage();
+    const end = start + this.itemsPerPage();
+    return this.filteredProducts().slice(start, end);
   });
 
   deleteMessage = computed(() => {
@@ -177,11 +182,16 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   onSearch(event: Event) {
     const value = (event.target as HTMLInputElement).value;
     this.searchTerm.set(value);
+    this.currentPage.set(1);
   }
 
-  onItemsPerPageChange(event: Event) {
-    const value = (event.target as HTMLSelectElement).value;
-    this.itemsPerPage.set(Number(value));
+  onItemsPerPageChange(value: number) {
+    this.itemsPerPage.set(value);
+    this.currentPage.set(1);
+  }
+
+  onPageChange(page: number) {
+    this.currentPage.set(page);
   }
 
   onAddProduct() {

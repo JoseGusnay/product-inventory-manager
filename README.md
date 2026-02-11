@@ -1,4 +1,4 @@
-# 🏦 Financial Product Inventory Manager
+# Product Inventory Manager
 
 Este proyecto es una solución integral para la gestión de productos financieros, construida utilizando las funcionalidades más modernas de **Angular v21**.
 
@@ -8,7 +8,7 @@ Este proyecto es una solución integral para la gestión de productos financiero
 
 Para ejecutar este proyecto de forma local, asegúrate de tener instalado:
 
-- **Node.js**: `v22.x` o `v24.x` (LTS recomendadas).
+- **Node.js**: `v22.x` o `v24.x` (LTS recomendadas) o `v20.19.0+`.
 - **Yarn** o **npm** (Se usó Yarn durante el desarrollo).
 - **Angular CLI**: `v21.x` (Opcional, se puede ejecutar vía scripts de npm).
 
@@ -64,3 +64,19 @@ yarn test
 # Ejecutar tests con reporte de cobertura (Coverage)
 yarn test:coverage
 ```
+
+---
+
+## 🐳 Ejecución con Docker
+
+Para una experiencia más rápida y sin necesidad de instalar dependencias locales, puedes usar Docker Compose:
+
+```bash
+# Construir y levantar ambos contenedores (Back y Front)
+docker-compose up --build
+```
+
+- **Frontend**: `http://localhost:4200`
+- **Backend**: `http://localhost:3002`
+
+---

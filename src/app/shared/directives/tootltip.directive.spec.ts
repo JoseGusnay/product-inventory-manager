@@ -20,7 +20,7 @@ class TestComponent {
 describe('TooltipDirective', () => {
   let component: TestComponent;
   let fixture: ComponentFixture<TestComponent>;
-  let divEl: ElementRef;
+  let divEl: any;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

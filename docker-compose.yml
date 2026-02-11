@@ -1,0 +1,22 @@
+services:
+  backend:
+    image: product-inventory-backend:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "3002:3002"
+    environment:
+      - NODE_ENV=development
+
+  frontend:
+    image: product-inventory-frontend:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+    environment:
+      - NODE_ENV=production

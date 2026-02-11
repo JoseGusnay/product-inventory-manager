@@ -1,0 +1,94 @@
+@use '../styles/variables' as v;
+
+.app-layout {
+  height: 100vh;
+  background-color: #f5f7fa;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.app-header {
+  background-color: #fff;
+  padding: 1rem 2rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  z-index: 1000;
+  position: relative;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+
+  .back-button {
+    position: absolute;
+    left: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a237e;
+    transition:
+      transform 0.2s,
+      background 0.2s;
+    border-radius: 50%;
+
+    @media (max-width: 768px) {
+      left: 0.5rem;
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+      transform: translateX(-2px);
+    }
+
+    .chevron-left {
+      display: inline-block;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      width: 10px;
+      height: 10px;
+      transform: rotate(135deg);
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #1a237e;
+
+    .logo-icon {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 600px) {
+  .app-content {
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+
+    /* IE 10+ */
+    &::-webkit-scrollbar {
+      display: none;
+      /* Chrome/Safari/Webkit */
+    }
+  }
+}

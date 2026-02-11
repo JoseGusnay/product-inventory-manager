@@ -55,7 +55,7 @@ describe('TableComponent', () => {
     fixture.detectChanges();
 
     const skeletons = fixture.debugElement.queryAll(By.css('app-skeleton'));
-    // 5 skeleton rows * 2 columns = 10 skeletons
+
     expect(skeletons.length).toBe(10);
   });
 
@@ -79,7 +79,6 @@ describe('TableComponent', () => {
     fixture.detectChanges();
 
     const cellText = fixture.debugElement.query(By.css('tbody td')).nativeElement.textContent;
-    // expect(cellText).toContain('Test!'); // This might be tricky with standalone templates
   });
 
   it('should have 5 skeleton items by default', () => {

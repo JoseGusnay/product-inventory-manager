@@ -23,14 +23,10 @@ export class ProductMapper {
     };
   }
 
-  /**
-   * Special mapper for the form data which uses YYYY-MM-DD strings
-   * but needs to be sent as ISO strings to the API.
-   */
   static fromFormToDTO(formData: any): ProductDTO {
     return {
       ...formData,
-      // Ensure dates are in the correct format for the API
+
       date_release: new Date(formData.date_release).toISOString(),
       date_revision: new Date(formData.date_revision).toISOString(),
     };

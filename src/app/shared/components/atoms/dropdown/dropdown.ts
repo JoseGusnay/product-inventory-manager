@@ -57,7 +57,6 @@ export interface DropdownOption {
         }
 
         &__menu {
-          // Fixed position handled by ngStyle
           background: white;
           border: 1px solid #eee;
           border-radius: 4px;

@@ -11,10 +11,8 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
       let errorMessage = 'Ha ocurrido un error inesperado';
 
       if (error.error instanceof ErrorEvent) {
-        // Client-side error
         errorMessage = `Error: ${error.error.message}`;
       } else {
-        // Server-side error
         if (error.status === 400) {
           errorMessage = error.error?.message || 'Solicitud incorrecta';
         } else if (error.status === 404) {

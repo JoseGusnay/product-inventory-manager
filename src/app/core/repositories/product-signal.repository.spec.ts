@@ -73,7 +73,6 @@ describe('ProductSignalRepository', () => {
 
     apiMock.createProduct.mockReturnValue(of(productDTO));
 
-    // Initial state
     expect(repository.products().length).toBe(0);
 
     repository.create(domainProduct).subscribe((newProduct) => {
@@ -83,7 +82,6 @@ describe('ProductSignalRepository', () => {
   });
 
   it('should update an existing product in signal (update)', () => {
-    // Load initial
     repository.fetchAll().subscribe();
 
     const updatedDTO = { ...mockDTOs[0], name: 'Updated Name' };
@@ -104,7 +102,6 @@ describe('ProductSignalRepository', () => {
   });
 
   it('should remove product from signal on delete', () => {
-    // Load initial
     repository.fetchAll().subscribe();
     expect(repository.products().length).toBe(1);
 

@@ -1,59 +1,66 @@
-# ProductInventoryManager
+# 🏦 Financial Product Inventory Manager
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.5.
+Este proyecto es una solución integral para la gestión de productos financieros, construida utilizando las funcionalidades más modernas de **Angular v21**.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🛠️ Requisitos Previos
 
-```bash
-ng serve
-```
+Para ejecutar este proyecto de forma local, asegúrate de tener instalado:
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **Node.js**: `v22.x` o `v24.x` (LTS recomendadas).
+- **Yarn** o **npm** (Se usó Yarn durante el desarrollo).
+- **Angular CLI**: `v21.x` (Opcional, se puede ejecutar vía scripts de npm).
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 📦 Instalación y Ejecución
 
-```bash
-ng generate component component-name
-```
+El proyecto se divide en dos partes: el **Servidor de API** (Backend) y la **Aplicación Angular** (Frontend).
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### 1. Levantar el Backend (API)
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+Ubicado en la carpeta `repo-interview-main`.
 
 ```bash
-ng build
+# Entrar a la carpeta del backend
+cd repo-interview-main
+
+# Instalar dependencias
+yarn install  # o npm install
+
+# Iniciar servidor en modo desarrollo
+yarn start:dev  # o npm run start:dev
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+_El servidor correrá en `http://localhost:3002`._
 
-## Running unit tests
+### 2. Levantar el Frontend (Angular)
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Desde la raíz del proyecto.
 
 ```bash
-ng test
+# Instalar dependencias
+yarn install  # o npm install
+
+# Iniciar aplicación Angular
+yarn start  # o npm start
 ```
 
-## Running end-to-end tests
+_La aplicación se abrirá en `http://localhost:4200`._
 
-For end-to-end (e2e) testing, run:
+---
+
+## 🧪 Testing y Calidad
+
+Hemos implementado una suite de pruebas rigurosa asegurando que cada pieza clave del sistema funcione correctamente.
+
+### Ejecutar Pruebas
 
 ```bash
-ng e2e
+# Ejecutar todos los tests
+yarn test
+
+# Ejecutar tests con reporte de cobertura (Coverage)
+yarn test:coverage
 ```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

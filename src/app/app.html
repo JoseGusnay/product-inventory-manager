@@ -1,1 +1,19 @@
-<router-outlet />
+<div class="app-layout">
+  <header class="app-header">
+    @if (showBackButton()) {
+      <button type="button" class="back-button" (click)="goBack()" aria-label="Volver">
+        <span class="chevron-left"></span>
+      </button>
+    }
+    <div class="app-header__logo">
+      <!-- <span class="logo-icon">🏦</span> -->
+      <span class="logo-text">BANCO</span>
+    </div>
+  </header>
+
+  <main class="app-content" [@routeAnimations]="prepareRoute()">
+    <router-outlet></router-outlet>
+  </main>
+</div>
+
+<app-notification></app-notification>

@@ -9,7 +9,6 @@
   margin-bottom: 0;
 
   @media (max-width: 768px) {
-    // En mobile el scrollbar ocupa espacio abajo, necesitamos un poco más
     padding-bottom: 0;
     margin-bottom: 0;
   }
@@ -40,13 +39,12 @@
         justify-content: center;
         width: 16px;
         height: 16px;
-        background-color: #666; // Darker gray background
+        background-color: #666;
         color: white;
         border-radius: 50%;
         font-size: 10px;
         margin-left: 6px;
         cursor: help;
-        // position: relative; // Not needed for fixed tooltip
       }
     }
   }
@@ -59,8 +57,7 @@
 
       &:hover {
         background-color: #fcfcfc;
-        z-index: 50; // Mayor que el footer (20) para que no se oculte al final de la lista
-      }
+        z-index: 50; 
     }
 
     td {

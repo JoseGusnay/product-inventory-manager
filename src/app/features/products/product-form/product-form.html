@@ -1,0 +1,67 @@
+<div class="p-product-form-view">
+  <div class="p-product-form-view__container shadow-card">
+    <header class="p-product-form-view__header">
+      <h2>{{ formTitle() }}</h2>
+    </header>
+
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="p-product-form">
+      <div class="p-product-form__grid">
+        <app-form-field
+          [label]="uiTexts.FORM.LABELS.ID"
+          formControlName="id"
+          [errorMessages]="formErrors.id"
+          [loading]="isIdValidating()"
+        ></app-form-field>
+
+        <app-form-field
+          [label]="uiTexts.FORM.LABELS.NAME"
+          formControlName="name"
+          [errorMessages]="formErrors.name"
+        ></app-form-field>
+
+        <app-form-field
+          [label]="uiTexts.FORM.LABELS.DESCRIPTION"
+          formControlName="description"
+          [errorMessages]="formErrors.description"
+        ></app-form-field>
+
+        <app-form-field
+          [label]="uiTexts.FORM.LABELS.LOGO"
+          formControlName="logo"
+          [errorMessages]="formErrors.logo"
+        ></app-form-field>
+
+        <app-form-field
+          [label]="uiTexts.FORM.LABELS.RELEASE_DATE"
+          formControlName="date_release"
+          type="date"
+          [errorMessages]="formErrors.date_release"
+        ></app-form-field>
+
+        <app-form-field
+          [label]="uiTexts.FORM.LABELS.REVISION_DATE"
+          formControlName="date_revision"
+          type="date"
+          [errorMessages]="formErrors.date_revision"
+        ></app-form-field>
+      </div>
+
+      <div class="p-product-form__actions">
+        <app-button
+          [label]="uiTexts.ACTIONS.RESET"
+          variant="secondary"
+          type="button"
+          (clicked)="onReset()"
+        ></app-button>
+
+        <app-button
+          [label]="uiTexts.ACTIONS.SEND"
+          variant="primary"
+          type="submit"
+          [loading]="isSubmitting()"
+          [disabled]="productForm.invalid || productForm.pending"
+        ></app-button>
+      </div>
+    </form>
+  </div>
+</div>

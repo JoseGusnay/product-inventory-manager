@@ -119,7 +119,7 @@ describe('DropdownComponent', () => {
     (component as any).calculatePosition();
 
     const style = component.dropdownStyle();
-    expect(style['bottom']).toBe('54px'); // 800 - 750 + 4
+    expect(style['bottom']).toBe('54px');
     expect(component.dropdownPosition()).toBe('top');
   });
 
@@ -134,7 +134,6 @@ describe('DropdownComponent', () => {
       height: 30,
     } as DOMRect);
 
-    // menuWidth is 150. right(80) - 150 = -70. -70 < 10, so it should align left.
     (component as any).calculatePosition();
 
     const style = component.dropdownStyle();

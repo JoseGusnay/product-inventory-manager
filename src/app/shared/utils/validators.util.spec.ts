@@ -30,7 +30,6 @@ describe('CustomValidators', () => {
     });
 
     it('should return error for past date', () => {
-      // Use a date definitely in the past
       const control = new FormControl('2000-01-01');
       const result = CustomValidators.minDateToday(control);
       expect(result).toEqual({ dateInvalid: true });

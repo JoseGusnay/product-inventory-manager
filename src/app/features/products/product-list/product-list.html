@@ -1,0 +1,79 @@
+<div class="p-product-list">
+  <div class="p-product-list__header">
+    <div class="search-container">
+      <input
+        type="text"
+        [placeholder]="uiTexts.ACTIONS.SEARCH_PLACEHOLDER"
+        class="search-input"
+        (input)="onSearch($event)"
+      />
+    </div>
+
+    <app-button
+      [label]="uiTexts.ACTIONS.ADD"
+      variant="primary"
+      (clicked)="onAddProduct()"
+    ></app-button>
+  </div>
+
+  <div class="p-product-list__content shadow-card">
+    <app-table [data]="paginatedProducts()" [columns]="columns()" [isLoading]="isLoading()">
+    </app-table>
+
+    <div class="p-product-list__footer">
+      <span class="results-count"
+        >{{ filteredProducts().length }} {{ uiTexts.MESSAGES.RESULTS }}</span
+      >
+      <div class="pagination-container">
+        <select
+          class="pagination-select"
+          [value]="itemsPerPage()"
+          (change)="onItemsPerPageChange($event)"
+        >
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Templates for Table -->
+  <ng-template #logoTemplate let-row>
+    <app-avatar [src]="row.logo" [name]="row.name"></app-avatar>
+  </ng-template>
+
+  <ng-template #dateTemplate let-row>
+    {{ row.dateRelease | date: 'dd/MM/yyyy' }}
+  </ng-template>
+
+  <ng-template #revisionDateTemplate let-row>
+    {{ row.dateRevision | date: 'dd/MM/yyyy' }}
+  </ng-template>
+
+  <ng-template #actionsTemplate let-row>
+    <div class="action-cell">
+      <app-dropdown
+        [options]="dropdownOptions"
+        [isOpen]="openDropdownId() === row.id"
+        (toggled)="toggleDropdown(row.id, $any($event))"
+        (optionSelected)="onAction($event, row)"
+      ></app-dropdown>
+    </div>
+  </ng-template>
+
+  @defer (on interaction; when isModalOpen()) {
+    <app-modal
+      [isOpen]="isModalOpen()"
+      [isLoading]="isDeleting()"
+      [title]="uiTexts.TITLES.DELETE_TITLE || 'Eliminar'"
+      [confirmLabel]="uiTexts.ACTIONS.CONFIRM"
+      (confirmed)="confirmDelete()"
+      (closed)="isModalOpen.set(false)"
+    >
+      <p>{{ deleteMessage() }}</p>
+    </app-modal>
+  } @placeholder {
+    <div class="modal-placeholder"></div>
+  }
+</div>

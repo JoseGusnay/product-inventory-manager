@@ -8,7 +8,7 @@ describe('DateUtils', () => {
 
     it('should return date exactly one year later', () => {
       const input = '2023-01-01';
-      const expected = '2024-01-01'; // Exact 1 year
+      const expected = '2024-01-01';
       expect(DateUtils.calculateOneYearLater(input)).toBe(expected);
     });
 

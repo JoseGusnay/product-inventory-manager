@@ -34,7 +34,6 @@ describe('TooltipDirective', () => {
   });
 
   afterEach(() => {
-    // Cleanup any leaked tooltips in body
     const tooltips = document.querySelectorAll('.custom-tooltip');
     tooltips.forEach((t) => (t as any).remove());
   });

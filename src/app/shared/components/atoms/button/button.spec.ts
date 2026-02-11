@@ -56,6 +56,6 @@ describe('ButtonComponent', () => {
 
     const buttonElement = fixture.nativeElement.querySelector('button') as HTMLButtonElement;
     expect(buttonElement.classList.contains('a-button--secondary')).toBe(true);
-    expect(buttonElement.disabled).toBe(true); // disabled || loading
+    expect(buttonElement.disabled).toBe(true);
   });
 });

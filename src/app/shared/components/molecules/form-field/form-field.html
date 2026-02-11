@@ -1,0 +1,16 @@
+<div class="m-form-field">
+  <app-label [text]="label()"></app-label>
+
+  <app-input
+    [formControl]="internalControl"
+    [hasError]="isInvalid()"
+    [isLoading]="isLoading()"
+    [placeholder]="placeholder()"
+    [type]="type()"
+    (blur)="onTouched()"
+  ></app-input>
+
+  @if (isInvalid()) {
+    <app-error [message]="displayError() || ''"></app-error>
+  }
+</div>

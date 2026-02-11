@@ -1,0 +1,90 @@
+@use '../../../../../styles/variables' as v;
+
+.m-table-container {
+  width: 100%;
+  overflow-x: auto;
+  background: white;
+  border-radius: 4px;
+  padding-bottom: 0;
+  margin-bottom: 0;
+
+  @media (max-width: 768px) {
+    // En mobile el scrollbar ocupa espacio abajo, necesitamos un poco más
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+}
+
+.m-table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+
+  thead {
+    background-color: #f5f6f8;
+    position: relative;
+    z-index: 2;
+
+    th {
+      padding: 16px;
+      color: v.$color-text-primary;
+      font-weight: 600;
+      border-bottom: 2px solid #eee;
+      white-space: nowrap;
+
+      .info-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 16px;
+        height: 16px;
+        background-color: #666; // Darker gray background
+        color: white;
+        border-radius: 50%;
+        font-size: 10px;
+        margin-left: 6px;
+        cursor: help;
+        // position: relative; // Not needed for fixed tooltip
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid #eee;
+      transition: background 0.2s;
+      position: relative;
+
+      &:hover {
+        background-color: #fcfcfc;
+        z-index: 50; // Mayor que el footer (20) para que no se oculte al final de la lista
+      }
+    }
+
+    td {
+      padding: 16px;
+      color: v.$color-text-primary;
+      vertical-align: middle;
+    }
+  }
+
+  &__logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #eee;
+  }
+
+  &__empty {
+    text-align: center;
+    padding: 40px !important;
+    color: #999;
+  }
+
+  &__actions {
+    text-align: center;
+  }
+}

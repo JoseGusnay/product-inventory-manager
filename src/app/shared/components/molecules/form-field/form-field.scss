@@ -1,0 +1,15 @@
+@use '../../../../../styles/variables' as v;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.m-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-sm;
+  margin-bottom: v.$spacing-md;
+  width: 100%;
+  // max-width: 400px;
+}

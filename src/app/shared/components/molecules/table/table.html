@@ -1,0 +1,49 @@
+<div class="m-table-container">
+  <table class="m-table">
+    <thead>
+      <tr>
+        @for (col of columns(); track col.header) {
+          <th [style.width]="col.width" [style.text-align]="col.align || 'left'">
+            {{ col.header }}
+            @if (col.tooltip) {
+              <span class="info-icon" [appTooltip]="col.tooltip">i</span>
+            }
+          </th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @if (isLoading()) {
+        @for (item of skeletonItems(); track $index) {
+          <tr>
+            @for (col of columns(); track col.header) {
+              <td><app-skeleton [width]="col.width || '100%'" height="20px"></app-skeleton></td>
+            }
+          </tr>
+        }
+      } @else {
+        @for (row of data(); track $index) {
+          <tr>
+            @for (col of columns(); track col.header) {
+              <td [style.text-align]="col.align || 'left'">
+                @if (col.template) {
+                  <ng-container
+                    *ngTemplateOutlet="col.template; context: { $implicit: row }"
+                  ></ng-container>
+                } @else {
+                  {{ row[col.field!] }}
+                }
+              </td>
+            }
+          </tr>
+        } @empty {
+          <tr>
+            <td [attr.colspan]="columns().length" class="m-table__empty">
+              {{ uiTexts.MESSAGES.NO_RESULTS }}
+            </td>
+          </tr>
+        }
+      }
+    </tbody>
+  </table>
+</div>
